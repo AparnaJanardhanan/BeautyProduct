@@ -26,7 +26,6 @@ const AppHeader = ({ searchTerm, setSearchTerm, onSearchResult }) => {
         {
             enabled: false,
             onSuccess: (data) => {
-                console.log('data in header', data);
                 onSearchResult({
                     data: data,
                     isLoading: isLoading
@@ -34,7 +33,6 @@ const AppHeader = ({ searchTerm, setSearchTerm, onSearchResult }) => {
             },
         }
     );
-    console.log("data", data && data);
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };

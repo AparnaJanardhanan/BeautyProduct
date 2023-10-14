@@ -30,7 +30,6 @@ const ShopByType = () => {
         {
             enabled: false,
             onSuccess: (data) => {
-                console.log('data in type', data);
                 setFlag(true);
             },
         }

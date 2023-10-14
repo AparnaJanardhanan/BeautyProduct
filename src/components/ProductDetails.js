@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppHeader from './Layout/AppHeader';
 import AppFooter from './Layout/AppFooter';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/actions/cartActions';
 import { toast } from 'react-toastify';
+import BuyNowModal from './BuyNowModal';
 
 const ProductDetails = () => {
     const location = useLocation();
     const dispatch = useDispatch();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [addItem, setAddItem] = useState();
+
+    const openModal = () => {
+        setIsModalOpen(true);
+        setAddItem(location.state);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     const handleAddToCart = () => {
         dispatch(addToCart(location.state));
@@ -40,10 +52,11 @@ const ProductDetails = () => {
                     </div>
                     <div className='flex space-x-4 pt-8'>
                         <button className='w-full h-10 bg-orange-400 text-white rounded-full' onClick={handleAddToCart}>ADD TO CART</button>
-                        <button className='w-full h-10 bg-orange-600 text-white rounded-full'>BUY NOW</button>
+                        <button className='w-full h-10 bg-orange-600 text-white rounded-full' onClick={openModal}>BUY NOW</button>
                     </div>
                 </div>
             </div>
+            <BuyNowModal isOpen={isModalOpen} onClose={closeModal} buyProduct={addItem} />
             <AppFooter />
         </>
     )

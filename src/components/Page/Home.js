@@ -9,13 +9,12 @@ const Home = () => {
     const [searchResult, setSearchResult] = useState(null);
 
     const handleSearchResult = (data) => {
-        console.log('data for****', data);
         setSearchResult(data);
     };
 
     return (
         <>
-            <AppHeader setSearchTerm={setSearchTerm} searchTerm={searchTerm} onSearchResult={handleSearchResult} />
+            <AppHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm} onSearchResult={handleSearchResult} />
             {!searchResult ? (<Display />) : (
                 <Products data={searchResult.data} isLoading={searchResult.isLoading} />)}
             <AppFooter />

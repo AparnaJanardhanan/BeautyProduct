@@ -32,7 +32,6 @@ const ShopByBrand = () => {
         {
             enabled: false,
             onSuccess: (data) => {
-                console.log('data in brand', data);
                 setFlag(true);
             },
         }

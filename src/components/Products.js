@@ -15,7 +15,7 @@ const Products = ({ data, isLoading }) => {
             description: product.description,
             image: product.image_link,
             name: product.name,
-            price: product.price
+            price: product.price,
         }
         dispatch(addToCart(payload));
         toast.success('Added to your Cart!', {
@@ -31,7 +31,7 @@ const Products = ({ data, isLoading }) => {
     };
 
     const handleProductClick = (product) => {
-      navigate('/product',{state:{name:product.name, price:product.price, description:product.description, image:product.image_link}});
+        navigate('/product', { state: { name: product.name, price: product.price, description: product.description, image: product.image_link } });
     };
 
     return (
@@ -63,7 +63,7 @@ const Products = ({ data, isLoading }) => {
                             <div className="img_container relative p-2 bg-bgGray rounded-lg">
                                 <div className="absolute top-2 right-2 flex flex-col">
                                     <span className="bg-orange-600 text-white p-2 rounded-tl-lg">Top Sell</span>
-                                    <AddShoppingCartIcon className="m-4 rounded-full text-orange-600 hover:bg-orange-600 hover:text-white transition-transform hover:scale-105" onClick={()=> {handleAddToCart(product)}}/>
+                                    <AddShoppingCartIcon className="m-4 rounded-full text-orange-600 hover:bg-orange-600 hover:text-white transition-transform hover:scale-105" onClick={() => { handleAddToCart(product) }} />
                                 </div>
                                 <img src={product.image_link} alt="description" className="w-full h-64" />
                             </div>
@@ -76,11 +76,9 @@ const Products = ({ data, isLoading }) => {
                                         <RatingDisplay rating={product.rating} />
                                     </p>
                                 </div>
-                                {product && (
-                                    <button className="w-full p-2 mt-4 text-2xl bg-orange-600 text-white rounded-md" onClick={()=>{handleProductClick(product)}}>
-                                        BUY NOW
-                                    </button>
-                                )}
+                                <button className="w-full p-2 mt-4 text-2xl bg-orange-600 text-white rounded-md" onClick={() => {handleProductClick(product)}}>
+                                    BUY NOW
+                                </button>
                             </div>
                         </div>
                     ))}
